@@ -14,4 +14,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
+	@RequestMapping(value = "/")
+	public String home(Model model) {
+		model.addAttribute("formpath", "home");
+		return "home";
+	}
+	@RequestMapping(value = "/home")
+	public String index(Model model, @RequestParam String formpath) {
+
+		model.addAttribute("formpath", formpath);
+
+		logger.warn("formpath : " + formpath);
+		return "home";
+	}
+
+	@RequestMapping(value = "/login")
+	public String login() {
+		return "member/loginForm";
+	}
+	@RequestMapping(value = "/member")
+	public String member() {
+		return "member/memberForm";
+	}
 }

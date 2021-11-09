@@ -1,0 +1,121 @@
+footer,
+#wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #272838;
+    height: 1250px;
+}
+footer {
+    margin-top: 70px;
+    padding-bottom: 20px;
+}
+.footwrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footwrap > label > a {
+    color: white;
+}
+.footwrap > label > a:hover{
+    text-decoration: none;
+    color:#50586C;
+}
+#common_header > h1 >a,
+#common_header > h1 > a:focus{
+    text-decoration: none;
+    color: white;
+}
+
+#common_header > h1 > a:hover{
+    color: #50586C;
+}
+table {
+    margin-top: 30px;
+}
+table a{
+    color: black;
+    font-weight: bold;
+}
+table a:hover{
+    color: #50586C;
+    text-decoration: none;
+}
+table th {
+    background-color:#333A51;
+    color: white;
+    text-align: center;
+}
+table td {
+    text-align: center;
+    background-color: #F9F9F9;
+}
+#register_jumbo{
+    margin-top: 70px;
+    background-color: #333A51;
+    color: white;
+}
+#login_jumbo {
+    margin-top: 120px;
+    margin-bottom: 60px;
+    background-color: #333A51;
+    color: white;
+}
+#register_jumbo hr,
+#login_jumbo hr {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+#index_jumbo {
+    margin-top: 75px;
+    background-image: url("../images/jumboback.png");
+    background-size: cover;
+    text-shadow: #2e2c20 0.2em 0.2em 0.2em;
+    color: white;
+}
+#index_row {
+    margin-top: 75px;
+    color: white;
+}
+
+.navbar-default{
+    background-color: #101820;
+    border-color: #101820;
+}
+.navbar-default .navbar-brand{
+    color: #FEE715;
+}
+footer,
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-nav > li > a:focus
+{
+    color: white;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-nav > li > a:hover{
+    background-color: transparent;
+    color: #50586C;
+}
+.navbar-default .navbar-nav .open .dropdown-menu{
+     background-color: #101820;
+}
+
+ .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: white;
+    text-decoration: none;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color:#50586C;
+}
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: white;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color:#50586C;
+    }
+    
+}
