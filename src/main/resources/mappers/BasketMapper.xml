@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.living_rental.order.dao.basketDAO">
+
+<select id="selectProc" resultType="com.living_rental.goods.dto.goodsDTO">
+	SELECT * FROM goods WHERE gdsNum=#{num}
+</select>
+
+<insert id="basketProc" parameterType="com.living_rental.order.dto.basketDTO">
+	INSERT INTO basket VALUES(#{id}, #{gdsNum}, #{gdsName}, #{gdsPrice}, #{gdsThumb})
+</insert>	
+
+<select id="basketCheckProc" resultType="com.living_rental.order.dto.basketDTO">
+	SELECT * FROM basket WHERE gdsNum=#{num}
+</select>
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.living_rental.goods.dao.goodsDAO">
+
+<insert id="registProc" parameterType="com.living_rental.goods.dto.goodsDTO">
+	<selectKey keyProperty="gdsNum" resultType="int" order="BEFORE">
+		SELECT nvl(max(gdsNum), 0)+1 FROM goods
+	</selectKey>
+	INSERT INTO goods VALUES(#{gdsNum}, #{gdsName}, #{cateName}, #{gdsPrice}, #{gdsThumb}, #{gdsImg})
+</insert>
+
+<select id="goodsListProc" resultType="com.living_rental.goods.dto.goodsDTO">
+	SELECT * FROM goods
+</select>
+
+<select id="goodsViewProc" resultType="com.living_rental.goods.dto.goodsDTO">
+	SELECT * FROM goods WHERE gdsNum=#{num}
+</select>
+
+</mapper>
