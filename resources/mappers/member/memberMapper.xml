@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.living_rental.manage.dao.IManageDAO">
+	<insert id="insertLogin"
+		parameterType="com.living_rental.manage.dto.LoginDTO">
+		INSERT INTO login VALUES(#{id},#{pw})
+	</insert>
+
+	<select id="IsExistId" resultType="int" parameterType="String">
+		SELECT count(*) FROM login WHERE id=#{id}
+	</select>
+
+	<insert id="insertMember"
+		parameterType="com.living_rental.manage.dto.MemberDTO">
+		INSERT INTO member VALUES(#{id},#{gender},#{email},#{name},#{phone},#{birth})
+	</insert>
+
+	<insert id="insertPost"	parameterType="com.living_rental.manage.dto.PostcodeDTO">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			SELECT nvl(max(no),0)+1 FROM postcode
+		</selectKey>
+		INSERT INTO postcode VALUES(#{no},#{zipcode},#{addr1},#{addr2},#{id})
+	</insert>
+</mapper>

@@ -19,18 +19,35 @@
                 </c:when>
                 <c:otherwise>
                     <li><a href="${root}logout ">로그아웃</a></li>
-                    <li><a href="${root}myPage">마이페이지</a></li>
+                    <li><a href="${root}home?formpath=memberList">마이페이지</a></li>
                 </c:otherwise>
             </c:choose>
             <li><a href="${root}home?formpath=member">회원가입</a></li>
-            <li><a href="/cart">장바구니</a></li>
+            <li><a href="${root}home?formpath=basket">장바구니</a></li>
         </ul>
     </div>
 </div>
-<div>
-    <a href="${root}"><img src="${pageContext.request.contextPath}/resources/images/brandImg.png"></a>
+<div class="jumbotron" id="homeContainer">
+    <div class="text-center">
+        <a href="${root}"><img src="${pageContext.request.contextPath}/resources/images/clearfix.png"></a>
+    </div>
 </div>
-
+<div class="navbar navbar-default" id="navbar-bottom">
+    <div class="container" id="nav-navmenu">
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#">티비</a></li>
+                <li><a href="#">냉장고</a></li>
+                <li><a href="#">세탁기</a></li>
+                <li><a href="#">공기청정기</a></li>
+                <li><a href="#">에어컨</a></li>
+                <li><a href="#">의류청정기</a></li>
+                <li><a href="#">안마의자</a></li>
+                <li><a href="#">청소기</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 </div>
 
 

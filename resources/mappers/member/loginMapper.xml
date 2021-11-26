@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.living_rental.login.dao.ILoginDAO">
+	<resultMap type="com.living_rental.manage.dto.LoginDTO"	id="login">
+		<result property="id" column="id" />
+		<result property="pw" column="pw" />
+	</resultMap>
+
+	<select id="loginProc" resultMap="login" parameterType="com.living_rental.manage.dto.LoginDTO">
+		SELECT * FROM login WHERE id=#{id}
+	</select>
+</mapper>

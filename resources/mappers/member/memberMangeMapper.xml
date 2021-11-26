@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.living_rental.manage.dao.IManageDAO">
+
+	<resultMap type="com.living_rental.manage.dto.MemberDTO" id="member">
+		<result column="id" property="id" />
+		<result column="pw" property="pw" />
+		<result column="email" property="email" />
+		<result column="gender" property="gender" />
+		<result column="name" property="name" />
+		<result column="birth" property="birth" />
+		<result column="phone" property="phone" />
+	</resultMap>
+
+	<select id="memberList" resultMap="member" >
+		SELECT B.* FROM(
+			SELECT rownum rn, A.* FROM(
+				SELECT * FROM member
+				<choose>
+					<when test="sel == 'id'">WHERE id LIKE '%'||#{search}||'%'</when>
+					<when test="sel == 'email'">WHERE email LIKE '%'||#{search}||'%'</when>
+					<when test="sel == 'name'">WHERE name LIKE '%'||#{search}||'%'</when>
+				</choose>
+			)A
+		)B WHERE rn BETWEEN #{b} and #{e}
+	</select>
+	
+	<select id="memberCount" resultType="int">
+		SELECT count(*) FROM member
+	</select>
+
+	<select id="userInfo" resultMap="member" parameterType="String">
+		SELECT * FROM member WHERE id=#{id}
+	</select>
+
+	<resultMap type="com.living_rental.manage.dto.PostcodeDTO"
+		id="post">
+		<result column="id" property="id" />
+		<result column="addr1" property="addr1" />
+		<result column="addr2" property="addr2" />
+		<result column="zipcode" property="zipcode" />
+	</resultMap>
+
+	<select id="userAddr" resultMap="post" parameterType="String">
+		SELECT addr1, addr2, zipcode FROM postcode WHERE id=#{id}
+	</select>
+
+	<resultMap type="com.living_rental.manage.dto.LoginDTO"
+		id="login">
+		<result column="id" property="id" />
+		<result column="pw" property="pw" />
+	</resultMap>
+	<select id="userPassword" resultMap="login"
+		parameterType="String">
+		SELECT id, pw FROM login WHERE id=#{id}
+	</select>
+
+	<update id="updateLogin"
+		parameterType="com.living_rental.manage.dto.LoginDTO">
+		UPDATE login SET pw=#{pw} WHERE id=#{id}
+	</update>
+	<update id="updateMember"
+		parameterType="com.living_rental.manage.dto.MemberDTO">
+		UPDATE member SET email=#{email}, birth=#{birth}, phone=#{phone} WHERE id=#{id}
+	</update>
+	<update id="updatePost"
+		parameterType="com.living_rental.manage.dto.PostcodeDTO">
+		UPDATE postcode set zipcode=#{zipcode}, addr1=#{addr1}, addr2=#{addr2} WHERE
+		id=#{id}
+	</update>
+
+	<delete id="deleteProc" parameterType="String">
+		DELETE FROM login WHERE id=#{id}
+	</delete>
+
+
+</mapper>

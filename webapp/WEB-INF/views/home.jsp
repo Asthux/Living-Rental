@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 부트스트랩 -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
-
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css">
     <title>Living Rental</title>
 </head>
 <body>
@@ -29,7 +29,7 @@
         <%@ include file="common/footer.jsp" %>
     </div>
 </div>
-<script src="<c:url value="/resources/js/bootstrap.js" />"></script>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="<c:url value="/resources/js/bootstrap.js" />"></script>
 </body>
 </html>

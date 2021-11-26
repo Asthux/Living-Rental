@@ -13,20 +13,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-
 	@RequestMapping(value = "/")
 	public String home(Model model) {
-		model.addAttribute("formpath", "home");
+		model.addAttribute("formpath", "goodsListProc");
 		return "home";
 	}
+
 	@RequestMapping(value = "/home")
-	public String index(Model model, @RequestParam String formpath) {
+	public String index(Model model, @RequestParam String formpath,
+						@RequestParam(required = false) String modifyId, HttpSession session) {
 
 		model.addAttribute("formpath", formpath);
 
+		if( ("modifyCheck".equals(formpath) || "memberDelete".equals(formpath))
+				&& session.getAttribute("modifyId") == null) {
+			session.setAttribute("modifyId", modifyId);
+			logger.warn("modifyId : " + modifyId);
+		}
 		logger.warn("formpath : " + formpath);
 		return "home";
 	}
+
 
 	@RequestMapping(value = "/login")
 	public String login() {
@@ -35,5 +42,52 @@ public class HomeController {
 	@RequestMapping(value = "/member")
 	public String member() {
 		return "member/memberForm";
+	}
+	@RequestMapping(value = "/memberDelete")
+	public String memberDelete() {
+		return "member/deleteForm";
+	}
+	@RequestMapping(value = "/modifyCheck")
+	public String modifyCheck() {
+		return "member/modifyCheckForm";
+	}
+	@RequestMapping(value = "/memberModify")
+	public String memberUpdate() {
+		return "member/memberModifyForm";
+	}
+	@RequestMapping(value = "/memberList")
+	public String memberList() {
+		return "member/memberListForm";
+	}
+	@RequestMapping(value = "/userInfo")
+	public String userInfo() {
+		return "member/userInfoForm";
+	}
+	@Autowired HttpSession session;
+	public String checkSession(String url) {
+		String id = (String)session.getAttribute("id");
+		if(id == null)
+			return "member/loginForm";
+		return url;
+	}
+
+	@RequestMapping(value = "/goodsList")
+	public String productList() {
+		return "goods/goodsListForm";
+	}
+
+	@RequestMapping(value = "/goodsRegist")
+	public String goodsRegist() {
+		return "goods/goodsRegistForm";
+	}
+
+	@RequestMapping(value = "/goodsView")
+	public String goodsView() {
+		return "goods/goodsViewForm";
+	}
+
+	@RequestMapping(value = "/basket")
+	public String basket() {
+		return "order/basketForm";
 	}
 }
