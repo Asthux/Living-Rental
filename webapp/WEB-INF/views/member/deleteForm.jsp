@@ -5,31 +5,34 @@
 		location.href = 'home?formpath=login'
 	</script>
 </c:if>
+<div class="container">
+	<div class="col-lg-3"></div>
+	<div class="col-lg-6">
+		<div class="jumbotron" id="login_jumbo">
+			<h2 style="text-align: center">Living Rental 탈퇴</h2>
+			<hr>
+			<form action="deleteAndCheckProc" method="post">
+				<div class="form-group">
+					<input type="password" class="form-control" placeholder="비밀번호" name="pw" maxlength="15">
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" placeholder="비밀번호 확인" name="pwOk" maxlength="15">
+				</div>
+				<div class="text-center">
+					<c:choose>
+						<c:when test="${sessionScope.id eq 'admin' }">
+							<input type="submit" class="btn btn-primary" value="삭제">
+						</c:when>
+						<c:otherwise>
+							<input type="submit" class="btn btn-primary" value="탈퇴">
+						</c:otherwise>
+					</c:choose>
+					<input type=button value='취소' class="btn btn-primary"  onclick="location.href='${root}home?formpath=goodsListProc'" />
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="col-lg-3"></div>
+</div>
 
-<center>
-	<form action="deleteAndCheckProc" method="post">
-		<table>
-			<tr>
-				<td>비밀번호</td>
-				<td><input type=password name='pw' style="width:250; height:35; border: 1px solid #D5D5D5;"/></td>
-			</tr>
-			<tr>
-				<td>비밀번호 확인</td>
-				<td><input type=password name='pwOk' style="width:250; height:35; border: 1px solid #D5D5D5;"/></td>
-			</tr>
-			<tr>
-				<td colspan=2 align='center'>
-				<c:choose>
-				<c:when test="${sessionScope.id eq 'admin' }">
-				<input type=submit value='삭제' style="width: 180px; height:45px; background-color:black; color:white;" /> 
-				</c:when>
-				<c:otherwise>
-				<input type=submit value='탈퇴' style="width: 180px; height:45px; background-color:black; color:white;" />
-				</c:otherwise>
-				</c:choose> 
-				<input type=button value='취소' style="width: 180px; height:45px; background-color:gray; color:white;" onclick="location.href='${root}'" /></td>
-			</tr>
-		</table>
-	</form>
-</center>
 

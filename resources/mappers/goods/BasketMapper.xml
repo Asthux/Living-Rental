@@ -6,11 +6,20 @@
 	SELECT * FROM goods WHERE gdsNum=#{num}
 </select>
 
-<insert id="basketProc" parameterType="com.living_rental.order.dto.basketDTO">
+<insert id="basketRegistProc" parameterType="com.living_rental.order.dto.basketDTO">
 	INSERT INTO basket VALUES(#{id}, #{gdsNum}, #{gdsName}, #{gdsPrice}, #{gdsThumb})
 </insert>	
 
 <select id="basketCheckProc" resultType="com.living_rental.order.dto.basketDTO">
 	SELECT * FROM basket WHERE gdsNum=#{num}
 </select>
+
+<select id="basketListProc" resultType="com.living_rental.order.dto.basketDTO">
+	SELECT * FROM basket WHERE id=#{id}
+</select>
+
+<delete id="basketDeleteProc">
+	DELETE FROM basket WHERE gdsNum=#{num}
+</delete>
+
 </mapper>

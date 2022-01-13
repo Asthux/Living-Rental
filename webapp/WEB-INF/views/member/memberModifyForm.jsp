@@ -33,71 +33,82 @@ table{border-collapse: collapse;}
 tr {border: 1px solid #D5D5D5;}
 lable{color: red;}
 </style>
-<center>
-	
-	<form action="memberModifyProc" method="post">
-		<table>
-			<tr>
-				<td align='left' height=60>이름</td>
-				<td><input type=text name='name' id="name" style="width:250; height:35; border: 1px solid #D5D5D5;" value='${modifyAll.name }' disabled="disabled"  /></td>
-			</tr>
-			<tr>
-				<td align='left' height=60>생년월일</td>
-				<td><input type=text name='birth' id="birth" style="width:250; height:35; border: 1px solid #D5D5D5;"  value='${modifyAll.birth }'   /></td>
-			</tr>
-			<tr>
-				<td align='left' height=60>성별</td>
-				<td colspan="3">	
-				<c:if test="${modifyAll.gender == 'm' }">
-						<input type=radio name='gender' value='m' checked="checked" />남자
-						<input type=radio name='gender' value='w' disabled="disabled" />여자 
-				</c:if> 
-				<c:if test="${modifyAll.gender == 'w' }">
-						<input type=radio name='gender' value='m' disabled="disabled" />남자
-						<input type=radio name='gender' value='w' checked="checked" />여자 
-				</c:if></td>
-			</tr>
-			<tr>
-				<td align='left' height=60>아이디</td>
-				<td><input type=text name='id' id="id" style="width:250;  height:35; border: 1px solid #D5D5D5;" value='${sessionScope.modifyId }' disabled="disabled" /></td>
-				<td colspan="2"></td>
-			</tr>
-			<tr>
-				<td align='left' height=60 ><lable>*</lable>비밀번호</td>
-				<td><input type=text name='pw' style="width:250;  height:35; border: 1px solid #D5D5D5;" /></td>
-			</tr>
-			<tr>
-				<td align='left' height=60><lable>*</lable>비밀번호 확인</td>
-				<td><input type=text name='pwOk' style="width:250;  height:35; border: 1px solid #D5D5D5;" /></td>
-			</tr>
-			<tr>
-				<td align='left' height=60>연락처</td>
-				<td><input type=text name='phone' style="width:250;  height:35; border: 1px solid #D5D5D5;" value='${modifyAll.phone }' disabled="disabled" ></td>
-			</tr>
-			<tr>
-				<td align='left' height=60>이메일</td>
-				<td><input type=text name='email' id="email" style="width:250;  height:35; border: 1px solid #D5D5D5;" value="${modifyAll.email }"/></td>
-				<td colspan="2"></td>
-			</tr>
-			
-			<tr>
-				<td align='left' height=60 rowspan="3">주소</td>
-				<td><input type=text name='zipcode' id="zipcode" value="${modifyAll.zipcode }" readonly="readonly" style="width: 100px;" /></td>
-				<td><input type="button" value="주소 검색"	onclick="daumPost()" style="width:90; height:35; background-color:black; color:white;"></td>
-			</tr>
-			<tr>
-			<td colspan="3"><input type=text name='addr1' id="addr1" value="${modifyAll.addr1 }" readonly="readonly" style="width: 475px;" /></td>
-			</tr>
-			<tr>
-			<td colspan="3"><input type=text name='addr2' id="addr2" value="${modifyAll.addr2 }" style="width: 475px;" /></td>
-			</tr>
-			
-			<tr>
-				<td align='center' height=60 colspan="2">
-				<input type=submit value='수정' style="width: 250px; height: 50px; background-color:black; color:white;" /> 
-				<input type=button value='취소' style="width: 250px; height: 50px; background-color:gray; color:white;" onclick="location.href='${root}'"/>
-				</td>
-			</tr>
-		</table>
-	</form>
-</center>
+<div class="container">
+	<div class="col-lg-3"></div>
+	<div class="col-lg-6">
+		<div class="jumbotron" id="register_jumbo">
+			<h2 style="text-align: center">Living Rental 회원 정보 수정</h2>
+			<hr>
+			<div style="text-align: center">
+				<h3>
+					<span class="label label-info" id="msg">${msg}</span>
+				</h3>
+			</div>
+			<form action="memberModifyProc" method="post">
+				<label>아이디</label>
+				<div class="form-group">
+					<input type="text" class="form-control" value='${sessionScope.modifyId }' readonly="readonly" name="id" id="id" maxlength="15">
+				</div>
+				<label>비밀번호</label>
+				<div class="form-group">
+					<input type="password" class="form-control" placeholder="비밀번호" name="pw" maxlength="15">
+				</div>
+				<label>비밀번호 확인</label>
+				<div class="form-group">
+					<input type="password" class="form-control" placeholder="비밀번호 확인" name="pwConfirm" maxlength="15">
+				</div>
+				<label>이름</label>
+				<div class="form-group">
+					<input type="text" class="form-control" value="${modifyAll.name }" name="name" maxlength="20" readonly="readonly">
+				</div>
+				<label>생년월일</label>
+				<div class="form-group">
+					<input type="text" class="form-control"  value='${modifyAll.birth }' name="birth" maxlength="20">
+				</div>
+				<label>이메일</label>
+				<div class="form-group">
+					<input type="text" class="form-control" value="${modifyAll.email }" name="email" id="email" maxlength="50">
+				</div>
+				<label>전화번호</label>
+				<div class="form-group">
+					<input type="text" class="form-control" value='${modifyAll.phone }' name="phone" maxlength="15" readonly="readonly">
+				</div>
+				<label>주소</label>
+				<div class="form-group">
+					<div class="input-group">
+						<input type="text" class="form-control" name="zipcode" id="zipcode" value="${modifyAll.zipcode }" maxlength="15" readonly="readonly">
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-default" onclick="daumPost()">주소 검색</button>
+						</span>
+					</div>
+					<input type="text" class="form-control" name="addr1" id="addr1" value="${modifyAll.addr1 }" maxlength="15" readonly="readonly">
+					<input type="text" class="form-control" name="addr2" id="addr2" value="${modifyAll.addr2 }" maxlength="15">
+				</div>
+				<label></label>
+				<div class="form-group" style="text-align: center">
+					<div class="btn-group" data-toggle="buttons">
+						<c:if test="${modifyAll.gender == 'm' }">
+							<label class="btn btn-primary active">
+								<input type="radio" name="gender" autocomplete="off" value="m" checked>남자
+							</label>
+							<label class="btn btn-primary disabled">
+								<input type="radio" name="gender" autocomplete="off" value="w" disabled>여자
+							</label>
+						</c:if>
+						<c:if test="${modifyAll.gender == 'w' }">
+							<label class="btn btn-primary disabled">
+								<input type="radio" name="gender" autocomplete="off" value="m" disabled>남자
+							</label>
+							<label class="btn btn-primary active">
+								<input type="radio" name="gender" autocomplete="off" value="w" checked>여자
+							</label>
+						</c:if>
+					</div>
+				</div>
+				<label></label>
+				<input type="submit" class="btn btn-primary form-control" value="수정완료">
+			</form>
+		</div>
+	</div>
+	<div class="col-lg-3"></div>
+</div>

@@ -17,4 +17,11 @@
 	SELECT * FROM goods WHERE gdsNum=#{num}
 </select>
 
+<update id="goodsModifyProc" parameterType="com.living_rental.goods.dto.goodsDTO">
+	UPDATE goods SET gdsName=#{gdsName}, cateName=#{cateName}, gdsPrice=#{gdsPrice}, gdsThumb=#{gdsThumb}, gdsImg=#{gdsImg} WHERE gdsNum=#{gdsNum}
+</update>
+
+<delete id="goodsDeleteProc" parameterType="int">
+	DELETE FROM goods WHERE gdsNum=#{num}
+</delete>
 </mapper>

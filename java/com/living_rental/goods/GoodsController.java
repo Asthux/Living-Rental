@@ -1,14 +1,13 @@
 package com.living_rental.goods;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-
 import com.living_rental.goods.service.goodsService;
 
 @Controller
@@ -35,5 +34,16 @@ public class GoodsController {
 		return "forward:home?formpath=goodsView";
 	}
 	
+	@RequestMapping(value = "goodsModifyProc")
+	public String goodsModifyProc(String gdsNum, MultipartHttpServletRequest req) {
+		service.goodsModifyProc(gdsNum, req);
+		return "forward:home?formpath=goodsListProc";
+	}
+	
+	@RequestMapping(value = "goodsDeleteProc")
+	public String goodsDeleteProc(int gdsNum) {
+		service.goodsDeleteProc(gdsNum);
+		return "forward:home?formpath=goodsListProc";
+	}
 
 }

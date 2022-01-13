@@ -13,4 +13,8 @@ public interface goodsDAO {
 	public ArrayList<goodsDTO> goodsListProc();
 	
 	public goodsDTO goodsViewProc(int num);
+	
+	public void goodsModifyProc(goodsDTO goods);
+	
+	public void goodsDeleteProc(int num);
 }

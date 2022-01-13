@@ -3,10 +3,40 @@
 <c:url var="root" value="/"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+function deleteCheck(){
+	if(confirm("정말 삭제하시겠습니까?")==true){
+		location.replace('goodsDeleteProc?gdsNum=${goods.gdsNum}');
+	}
+	else{
+		false;
+	}
+}
 
-</script>	
-<center>
-<h1>${msg}</h1>
+function modify(){
+	$("#f").attr("action", "home?formpath=goodsModify");
+	$("#f").submit();
+}
+
+function basket(){
+	$("#f").attr("action", "basketProc");
+	$("#f").submit();
+}
+
+</script>
+<!-- action="home?formpath=goodsModify" -->
+<center id="login_jumbo">
+<form id="f" name="f" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="gdsNum" value="${goods.gdsNum }" />
+	<input type="hidden" name="gdsName" value="${goods.gdsName}" />
+	<input type="hidden" name="gdsPrice" value="${goods.gdsPrice }"/>
+	<input type="hidden" name="gdsThumb" value="${goods.gdsThumb }"/>
+	<input type="hidden" name="gdsImg" value="${goods.gdsImg }"/>
+<c:if test="${sessionScope.id eq 'admin'}" >
+	<div>
+		<input type="button" value="수정" onclick="modify()">
+		<input type="button" value="삭제" onclick="deleteCheck()">
+	</div>
+</c:if>
 <table style="width: 650px; border: 1px solid black;">
 	<tr>
 		<td rowspan="4">
@@ -21,7 +51,7 @@
 		<td>(상담 신청 버튼)</td>
 	</tr>
 	<tr>
-		<td><button id="basketB" onclick="location.href='basketProc?gdsNum=${goods.gdsNum}'">장바구니 담기</button></td>
+		<td><input type="button" value="장바구니 담기" onclick="basket()"></td>
 		<%-- "location.href='basketProc?gdsNum=${goods.gdsNum}'" --%>
 	</tr>
 	<tr style="width: 650px;">
@@ -31,5 +61,5 @@
 	</tr>
 </table>
 <!-- 굿즈 번호만 보내기 -->
-
+</form>
 </center>

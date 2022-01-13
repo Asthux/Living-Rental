@@ -10,7 +10,7 @@
 <div class="navbar navbar-default">
     <div class="container">
         <ul class="nav navbar-nav navbar-left">
-            <li><a href="board">고객센터</a></li>
+            <li><a href="${root}boardProc">고객센터</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <c:choose>
@@ -19,11 +19,11 @@
                 </c:when>
                 <c:otherwise>
                     <li><a href="${root}logout ">로그아웃</a></li>
-                    <li><a href="${root}home?formpath=memberList">마이페이지</a></li>
+                    <li><a href="${root}memberListProc">회원목록</a></li>
+                    <li><a href="${root}home?formpath=basketListProc">장바구니</a></li>
                 </c:otherwise>
             </c:choose>
             <li><a href="${root}home?formpath=member">회원가입</a></li>
-            <li><a href="${root}home?formpath=basket">장바구니</a></li>
         </ul>
     </div>
 </div>

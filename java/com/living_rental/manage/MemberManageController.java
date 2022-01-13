@@ -39,7 +39,7 @@ public class MemberManageController {
 			model.addAttribute("user", service.userInfo(id));
 			return "forward:/home?formpath=userInfo";
 		}
-		return "home";
+		return "forward:memberListProc";
 	}
 
 	 

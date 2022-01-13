@@ -9,9 +9,9 @@ table{border-collapse: collapse;}
 tr {border: 1px solid #D5D5D5;}
 lable{color: red;}
 </style>
-<center>
+<center id="login_jumbo">
 	<h2>회원 정보</h2>
-		<table>
+		<table style="width: 400px">
 			<tr>
 				<td align='left' height=60>이름</td>
 				<td align="center">${user.name }</td>
@@ -50,32 +50,32 @@ lable{color: red;}
 			<tr>
 				<td align='left' height=60 >주소</td>
 				<td style="width: 250px; height:40px;" align="center">${user.addr1} ${user.addr2 }</td>	
-			</tr>	
-			<tr>
-				<td colspan=2 style="height:10px;"></td>
 			</tr>
 			<tr>		
 			<td align='left' height=60>구매목록</td>
 			<td></td>
 			<tr>
 		<td colspan=2 align="center">
-			<input type=button style="width: 60px; background-color:black; color:white;" value='수정' onclick="location.href='${root}home?formpath=modifyCheck&modifyId=${user.id }'"/>
+			<div class="btn-group btn-group-justified" role="group">
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default"  onclick="location.href='${root}home?formpath=modifyCheck&modifyId=${user.id }'">수정</button>
+				</div>
 			<c:choose>
-			<c:when test="${sessionScope.id eq'admin' }">
-			<input type=button style="width: 60px; background-color:black; color:white;" value='삭제' onclick="location.href='${root}home?formpath=memberDelete&modifyId=${user.id }'"/>
-			</c:when>
-			<c:otherwise>
-			<input type=button style="width: 60px; background-color:black; color:white;" value='탈퇴' onclick="location.href='${root}home?formpath=memberDelete&modifyId=${user.id }'"/>
-			</c:otherwise>
-			</c:choose>
-			<c:choose>
-			<c:when test="${sessionScope.id eq 'admin' }">
-				<input type=button style="width: 60px; background-color:black; color:white;" value='목록' onclick="location.href='memberListProc'"/>
-			</c:when>
-			<c:otherwise>
-				<input type=button style="width: 60px; background-color:black; color:white;" value='취소' onclick="location.href='${root}'"/>
+				<c:when test="${sessionScope.id eq'admin' }">
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default"  onclick="location.href='${root}home?formpath=memberDelete&modifyId=${user.id }'">삭제</button>
+				</div>
+				</c:when>
+				<c:otherwise>
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" onclick="location.href='${root}home?formpath=memberDelete&modifyId=${user.id }'">탈퇴</button>
+				</div>
 				</c:otherwise>
-				</c:choose>
+			</c:choose>
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" onclick="location.href='memberListProc'">목록</button>
+				</div>
+			</div>
 		</td>
 	</tr>
 

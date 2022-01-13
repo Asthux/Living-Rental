@@ -3,18 +3,20 @@
     background-size: cover;
     height: 250px;
     margin-top: -20px;
-
-}
-.btn btn-primary form-control{
-    background-color: #8FBACC;
 }
 #register_jumbo > label{
     text-align: left;
 }
-
+#login_jumbo,
+#register_jumbo,
+#board_container{
+    margin-top: 100px;
+    margin-bottom: 120px;
+}
 #navbar-top{
     background-color: white;
 }
+
 #navbar-bottom{
     margin-top: -30px;
     justify-content: space-around;

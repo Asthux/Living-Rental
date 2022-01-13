@@ -18,7 +18,7 @@ public class LoginController {
     public String loginProc(LoginDTO login, Model model) {
         boolean result = loginService.loginProc(login);
         if(result == true) {
-            return "forward:home?formpath=goodsList";
+            return "forward:home?formpath=goodsListProc";
         }
         model.addAttribute("msg", "아이디/비밀번호를 확인하세요.");
 
@@ -29,6 +29,6 @@ public class LoginController {
     public String logout(Model model, HttpSession session) {
         session.invalidate();
         model.addAttribute("msg", "로그아웃");
-        return "forward:home?formpath=goodsList";
+        return "forward:home?formpath=goodsListProc";
     }
 }

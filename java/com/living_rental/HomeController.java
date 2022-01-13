@@ -2,6 +2,7 @@ package com.living_rental;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.living_rental.board.dto.BoardDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,8 +87,53 @@ public class HomeController {
 		return "goods/goodsViewForm";
 	}
 
+	@RequestMapping(value = "/goodsModify")
+	public String goodsModify() {
+		return "goods/goodsViewForm";
+	}
+
 	@RequestMapping(value = "/basket")
 	public String basket() {
 		return "order/basketForm";
+	}
+
+	@RequestMapping(value = "/board")
+	public String board() {
+		return "board/boardForm";
+	}
+
+	@RequestMapping(value = "/view")
+	public String view() {
+		String url = checkSession("board/viewForm");
+		return url;
+	}
+	@RequestMapping(value = "/write")
+	public String write() {
+		String url = checkSession("board/writeForm");
+		return url;
+	}
+
+	@RequestMapping(value = "modify")
+	public String modify(Model model, BoardDTO board) {
+		String url = checkSession("board/modifyForm");
+		model.addAttribute("board", board); //modifyForm.jsp에서 출력할 데이터
+		return url;
+	}
+
+	@RequestMapping(value = "delete")
+	public String delete(Model model, String proc, HttpServletRequest req) {
+		String url = checkSession("board/deleteForm");
+		if(proc == null) {
+			return "forward:boardProc";
+		}
+
+		if(proc.equals("deleteProc")) {
+			model.addAttribute("no", req.getParameter("no"));
+		}else {
+			model.addAttribute("checks", req.getParameterValues("checks"));
+		}
+
+		model.addAttribute("proc", proc);
+		return url;
 	}
 }

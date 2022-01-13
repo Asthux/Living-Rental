@@ -14,40 +14,48 @@
 		});
 	});
 </script>
-<center>
+<center id="login_jumbo">
 	<div>
-		<nav style="width: 300px; float:left;">
+		<article class="container">
 			<div>
-				<c:if test="${sessionScope.id eq 'admin'}">
-					<div>
-						<input type="button" value="상품 등록" onclick="location.href='${root}home?formpath=goodsRegist'">
-					</div>
-					<div>
-						<input type="button" value="상품 수정">
-					</div>
-					<div>
-						<input type="button" value="상품 삭제">
-					</div>
-				</c:if>
+				<h2>상품 목록</h2>
 			</div>
-		</nav>
-		<article style="width: 1000px; height: 800px; margin-left: 300px;">
+			<br>
 			<form id="f" method="get">
 			<input type="hidden" id="gdsNum" name="gdsNum">
-				<table>
+				<table class="container">
 					<thead>
 						<tr>
-							<th>상품 목록</th>		
+							<nav class="container">
+								<div>
+									<c:if test="${sessionScope.id eq 'admin'}">
+										<hr>
+										<div class="btn-group btn-group-justified" role="group">
+											<div class="btn-group" role="group">
+												<button type="button" class="btn btn-default" onclick="location.href='${root}home?formpath=goodsRegist'">상품 등록</button>
+											</div>
+											<div class="btn-group" role="group">
+												<button type="button" class="btn btn-default">상품 수정</button>
+											</div>
+											<div class="btn-group" role="group">
+												<button type="button" class="btn btn-default">상품 삭제</button>
+											</div>
+										</div>
+										<hr>
+									</c:if>
+								</div>
+							</nav>
 						</tr>
 					</thead>
-					<c:forEach var="list" items="${goodsList}">
 						<tr>
+							<c:forEach var="list" items="${goodsList}">
 							<td style="text-align: center;">
 								<div id="${list.gdsNum }" class="gdsClick"><img src="${pageContext.request.contextPath}/resources/upload/${list.gdsThumb}" style="width: 200px; height: 200px;"></div>
+								<br>
 								<div id="${list.gdsNum }" class="gdsClick">${list.gdsName }</div>
 							</td>
+							</c:forEach>
 						</tr>
-					</c:forEach>
 				</table>
 			</form>	
 		</article>	

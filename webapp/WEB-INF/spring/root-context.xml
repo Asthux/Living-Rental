@@ -25,8 +25,9 @@
 		<property name="mapperLocations"
 			value="classpath:/mappers/**/*Mapper.xml" />
 	</bean>
+
 	<!-- 마이바티스 xml파일과 dao빈 연결 -->
-	<mybatis-spring:scan base-package="com.living_rental.board.repository" />
+	<mybatis-spring:scan base-package="com.living_rental.board.dao" />
 	<mybatis-spring:scan base-package="com.living_rental.login.dao" />
 	<mybatis-spring:scan base-package="com.living_rental.membership.dao" />
 	<mybatis-spring:scan base-package="com.living_rental.goods.dao" />
